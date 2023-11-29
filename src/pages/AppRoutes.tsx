@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { Layout } from './home/Layout.tsx';
-import { Guest } from './guest/Guest.tsx';
+import { IncarcaFisier } from './guest/IncarcaFisier.tsx';
 import { SignIn } from './utilizator/sign-in/SignIn.tsx';
 import Error404Page from '../components/404.page.tsx';
 import { Home } from './home/home.tsx';
@@ -27,7 +27,7 @@ export const AppRoutes: RouteObject[] = [
   },
   {
     path: 'guest',
-    element: <Guest />,
+    element: <IncarcaFisier />,
   },
   {
     path: '*',
