@@ -46,7 +46,7 @@ export const Form: React.FC = () => {
               {...register('radioOption', { required: 'Please select an option' })}
               onChange={handleRadioChange}
             />
-            Option 1
+            Raster to Vector
           </label>
           <label className="flex flex-row gap-1.5 items-center">
             <input
@@ -56,7 +56,17 @@ export const Form: React.FC = () => {
               {...register('radioOption', { required: 'Please select an option' })}
               onChange={handleRadioChange}
             />
-            Option 2
+            Raster to DWG
+          </label>
+          <label className="flex flex-row gap-1.5 items-center">
+            <input
+              type="radio"
+              className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              value="option2"
+              {...register('radioOption', { required: 'Please select an option' })}
+              onChange={handleRadioChange}
+            />
+            Vector to DWG
           </label>
         </fieldset>
       </div>

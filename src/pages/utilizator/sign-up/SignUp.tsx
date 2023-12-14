@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@nextui-org/react';
 import { NavLink } from 'react-router-dom';
 export const SignUp: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const fetchDataCreate = async () => {
+    try {
+      const response = await fetch('/create');
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    if (!isLoading) {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (password !== confirmPassword) {
+      console.log('Parolele nu coincid');
+      return;
+    }
+    fetchDataCreate();
+  };
+
   return (
     <div className="h-[100vh] bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100">
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -15,8 +43,7 @@ export const SignUp: React.FC = () => {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form
               className="space-y-6"
-              action="#"
-              method="POST">
+              onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
@@ -30,6 +57,8 @@ export const SignUp: React.FC = () => {
                     type="email"
                     autoComplete="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -48,6 +77,8 @@ export const SignUp: React.FC = () => {
                     type="password"
                     autoComplete="current-password"
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -61,11 +92,13 @@ export const SignUp: React.FC = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    id="password"
-                    name="password"
+                    id="confirm-password"
+                    name="confirm-password"
                     type="password"
                     autoComplete="confirm-password"
                     required
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm sm:leading-6"
                   />
                 </div>
