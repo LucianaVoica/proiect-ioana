@@ -26,11 +26,12 @@ export const IncarcaFisier: React.FC = () => {
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-3">
-        <RadioGroup label="Conversion Type">
-          <Radio value="raster-vector">Raster to Vector</Radio>
-          <Radio value="raster-dwg">Raster to DWG</Radio>
-          <Radio value="vector-dwg">Vector to DWG</Radio>
+        <RadioGroup label={<span style={{ color: 'white' }}>Conversion Type</span>}>
+          <Radio value="raster-vector" style={{ color: 'white' }}>Raster to Vector</Radio>
+          <Radio value="raster-dwg" style={{ color: 'white' }}>Raster to DWG</Radio>
+          <Radio value="vector-dwg" style={{ color: 'white' }}>Vector to DWG</Radio>
         </RadioGroup>
+
         <FileUploader
           handleChange={handleChange}
           name="file"
@@ -38,8 +39,8 @@ export const IncarcaFisier: React.FC = () => {
         />
         <Button
           type="submit"
-          className="bg-teal-500 text-white">
-          Convert to DWG
+          className="bg-white text-orange-600 font-bold">
+          Convert
         </Button>
       </form>
     </div>

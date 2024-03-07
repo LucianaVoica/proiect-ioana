@@ -3,7 +3,7 @@ import { Button } from '@nextui-org/react';
 import { NavLink } from 'react-router-dom';
 export const SignUp: React.FC = () => {
   return (
-    <div className="h-[100vh] bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100">
+    <div className="h-[100vh] radial-gradient-bg">
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md ">
           <h2 className="mt-6 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
@@ -74,18 +74,18 @@ export const SignUp: React.FC = () => {
               <div>
                 <Button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-teal-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400">
+                  className="flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400">
                   Sign up
                 </Button>
               </div>
             </form>
           </div>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
+          <p className="mt-10 text-center text-sm text-white">
             Already have an account?{' '}
             <NavLink
               to="/sign-in"
-              className="font-semibold leading-6 text-teal-600 hover:text-teal-500">
+              className="font-semibold leading-6 text-orange-300 hover:text-gray-900">
               Sign in
             </NavLink>
           </p>

@@ -21,7 +21,7 @@ export const SignIn: React.FC = () => {
   // };
 
   return (
-    <div className="h-[100vh] bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100">
+    <div className="h-[100vh] radial-gradient-bg">
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md ">
           <h2 className="mt-6 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
@@ -89,7 +89,7 @@ export const SignIn: React.FC = () => {
                 <div className="text-sm leading-6">
                   <a
                     href="#"
-                    className="font-semibold text-teal-400 hover:text-teal-400">
+                    className="font-semibold text-orange-500 hover:text-gray-900">
                     Forgot password?
                   </a>
                 </div>
@@ -98,18 +98,18 @@ export const SignIn: React.FC = () => {
               <div>
                 <Button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-teal-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400">
+                  className="flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400">
                   Sign in
                 </Button>
               </div>
             </form>
           </div>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
+          <p className="mt-10 text-center text-sm text-white">
             Not a member?{' '}
             <NavLink
               to="/sign-up"
-              className="font-semibold leading-6 text-teal-600 hover:text-teal-500">
+              className="font-semibold leading-6 text-gray-900 hover:text-orange-500">
               Create account
             </NavLink>
           </p>
