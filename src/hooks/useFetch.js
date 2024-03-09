@@ -8,12 +8,7 @@ const useAxiosFetch = (url) => {
 
   const fetchData = async () => {
     try {
-      const token = localStorage.getItem('jwtToken');
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: `Bearer ${token}`, 
-        },
-      });
+      const response = await axios.get(url);
       setData(response.data);
     } catch (error) {
       setError(error.message);
