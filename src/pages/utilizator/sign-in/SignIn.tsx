@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@nextui-org/react';
 import { NavLink } from 'react-router-dom';
 export const SignIn: React.FC = () => {
-  // const [data, setData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-  // const fetchData = async () => {
-  //     try {
-  //         const response = await fetch('https://api.example.com/data');
-  //         if (!response.ok) {
-  //             throw new Error('Network response was not ok.');
-  //         }
-  //         const result = await response.json();
-  //         setData(result);
-  //     } catch (error) {
-  //         console.error('Error fetching data:', error);
-  //     } finally {
-  //         setIsLoading(false);
-  //     }
-  // };
+  const fetchDataLogin = async () => {
+    try {
+      const response = await fetch('/logare');
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    if (!isLoading) {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    fetchDataLogin();
+  };
 
   return (
     <div className="h-[100vh] radial-gradient-bg">
@@ -33,8 +38,7 @@ export const SignIn: React.FC = () => {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form
               className="space-y-6"
-              action="#"
-              method="POST">
+              onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
@@ -48,6 +52,8 @@ export const SignIn: React.FC = () => {
                     type="email"
                     autoComplete="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -66,6 +72,8 @@ export const SignIn: React.FC = () => {
                     type="password"
                     autoComplete="current-password"
                     required
+                    value={password}
+                    onChange={(p) => setPassword(p.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-400 sm:text-sm sm:leading-6"
                   />
                 </div>

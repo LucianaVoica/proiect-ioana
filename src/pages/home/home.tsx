@@ -1,6 +1,8 @@
 import React from 'react';
+
 import '../../css/layout_styles.css';
-import { IncarcaFisier } from '../guest/IncarcaFisier.tsx';
+// import { IncarcaFisier } from '../guest/IncarcaFisier.tsx';
+import { Form } from '../../components/Form.tsx';
 
 export const Home: React.FC = () => {
   return (
@@ -17,12 +19,7 @@ export const Home: React.FC = () => {
             Press then the Convert button and let the magic happen. 
           </p>
           <div className="mt-10 flex-row flex items-center gap-2">
-            {/*<Button*/}
-            {/*  variant={'ghost'}*/}
-            {/*  className="text-teal-500 border-1 font-medium border-teal-500">*/}
-            {/*  IncarcaFisier*/}
-            {/*</Button>*/}
-            <IncarcaFisier />
+            <Form />
           </div>
         </div>
         <img
