@@ -1,7 +1,9 @@
 
 .radial-gradient-bg {
-    background: rgb(221,107,32);
-    background: linear-gradient(90deg, rgba(221,107,32,0.9585084033613446) 0%, rgba(148,134,120,0.8940826330532213) 31%, rgba(50,41,37,0.9585084033613446) 100%);
+    /* background: rgb(78,17,119);
+    background: linear-gradient(90deg, rgba(78,17,119,0.9585084033613446) 0%, rgba(148,134,120,0.8940826330532213) 31%, rgba(50,41,37,0.9585084033613446) 100%); */
+    background: rgb(144,80,89);
+background: linear-gradient(90deg, rgba(144,80,89,0.9697128851540616) 2%, rgba(78,17,119,0.70640756302521) 21%, rgba(33,34,59,0.8324579831932774) 45%, rgba(35,33,56,0.8128501400560224) 54%, rgba(78,17,119,0.7372198879551821) 78%, rgba(144,80,89,0.9389005602240896) 100%);
 }
 
 
@@ -15,40 +17,44 @@
   
   @keyframes swipeRight {
     0% {
-        background-position: 0 0; /* Start from left */
+        background-position: 0 0; 
     }
     2.5% {
-        background-position: 0 0; /* Start from left */
+        background-position: 0 0; 
     }
     10% {
-        background-position: 100% 0; /* Move to the right */
+        background-position: 100% 0;
     }
     20% {
-        background-position: 200% 0; /* Move further to the right */
+        background-position: 200% 0; 
     }
     30% {
-        background-position: 300% 0; /* Move even further to the right */
+        background-position: 300% 0; 
     }
     40% {
-        background-position: 400% 0; /* Move even further to the right */
+        background-position: 400% 0; 
     }
     50% {
-        background-position: 500% 0; /* Move even further to the right */
+        background-position: 500% 0;
     }
     60% {
-        background-position: 600% 0; /* Move even further to the right */
+        background-position: 600% 0; 
     }
     70% {
-        background-position: 700% 0; /* Move even further to the right */
+        background-position: 700% 0; 
     }
     80% {
-        background-position: 800% 0; /* Move even further to the right */
+        background-position: 800% 0; 
     }
     90% {
-        background-position: 900% 0; /* Move even further to the right */
+        background-position: 900% 0; 
     }
     100% {
-        background-position: 1000% 0; /* Move even further to the right */
+        background-position: 1000% 0; 
     }
 }
 
+
+.hide_scrollbar {
+    overflow: hidden !important;
+}

@@ -37,19 +37,19 @@ export const Form: React.FC = () => {
       onSubmit={handleSubmit(onSubmit)}>
       <div className="flex">
         <div>
-          <p className="   font-bold  text-gray-900 ">Select an option</p>
+        <p className="font-bold text-gray-900 " style={{  fontStyle: 'italic' }}>Select an option: </p>
           <fieldset className="mt-2">
-            <label className="flex flex-row gap-1.5 items-center">
+            <label className="flex flex-row gap-1.5 items-center text-white">
               <input
                 type="radio"
                 value="option1"
-                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-black" 
                 {...register('radioOption', { required: 'Please select an option' })}
                 onChange={handleRadioChange}
               />
               Raster to Vector
             </label>
-            <label className="flex flex-row gap-1.5 items-center">
+            <label className="flex flex-row gap-1.5 items-center text-white">
               <input
                 type="radio"
                 className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
@@ -59,7 +59,7 @@ export const Form: React.FC = () => {
               />
               Raster to DWG
             </label>
-            <label className="flex flex-row gap-1.5 items-center">
+            <label className="flex flex-row gap-1.5 items-center text-white">
               <input
                 type="radio"
                 className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
