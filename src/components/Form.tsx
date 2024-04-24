@@ -33,56 +33,64 @@ export const Form: React.FC = () => {
 
   return (
     <form
-      className="flex flex-col gap-3"
+      className="flex flex-col"
       onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <p className="text-sm text-gray-500">Select an option</p>
-        <fieldset className="mt-2">
-          <label className="flex flex-row gap-1.5 items-center">
-            <input
-              type="radio"
-              value="option1"
-              className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-              {...register('radioOption', { required: 'Please select an option' })}
-              onChange={handleRadioChange}
-            />
-            Raster to Vector
-          </label>
-          <label className="flex flex-row gap-1.5 items-center">
-            <input
-              type="radio"
-              className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-              value="option2"
-              {...register('radioOption', { required: 'Please select an option' })}
-              onChange={handleRadioChange}
-            />
-            Raster to DWG
-          </label>
-          <label className="flex flex-row gap-1.5 items-center">
-            <input
-              type="radio"
-              className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-              value="option2"
-              {...register('radioOption', { required: 'Please select an option' })}
-              onChange={handleRadioChange}
-            />
-            Vector to DWG
-          </label>
-        </fieldset>
+      <div className="flex">
+        <div>
+          <p className="   font-bold  text-gray-900 ">Select an option</p>
+          <fieldset className="mt-2">
+            <label className="flex flex-row gap-1.5 items-center">
+              <input
+                type="radio"
+                value="option1"
+                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                {...register('radioOption', { required: 'Please select an option' })}
+                onChange={handleRadioChange}
+              />
+              Raster to Vector
+            </label>
+            <label className="flex flex-row gap-1.5 items-center">
+              <input
+                type="radio"
+                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                value="option2"
+                {...register('radioOption', { required: 'Please select an option' })}
+                onChange={handleRadioChange}
+              />
+              Raster to DWG
+            </label>
+            <label className="flex flex-row gap-1.5 items-center">
+              <input
+                type="radio"
+                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                value="option2"
+                {...register('radioOption', { required: 'Please select an option' })}
+                onChange={handleRadioChange}
+              />
+              Vector to DWG
+            </label>
+          </fieldset>
+        </div>
+        <div style={{ marginLeft: '50px' }}>
+          <FileUpload
+            selectedFile={selectedFile}
+            onDrop={handleFileChange}
+          />
+        </div>
+        
+       
       </div>
-
-      <FileUpload
-        selectedFile={selectedFile}
-        onDrop={handleFileChange}
-      />
-
+      
       <Button
         variant="solid"
         color="primary"
         isDisabled={!selectedFile || !selectedOption}
-        type="submit">
+        type="submit"
+        className="text-gray-900 font-medium bg-white w-64 h-10"
+       >
         Convert
       </Button>
+
     </form>
   );
 };

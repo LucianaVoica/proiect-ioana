@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,} from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { navigation, user, userNavigation } from '../../constants/homeConstants.tsx';
@@ -7,15 +7,26 @@ import Footer from './footer.tsx';
 import { Button } from '@nextui-org/react';
 // import useFetch from "../../hooks/useFetch";
 import '../../css/layout_styles.css';
+import useFetch from '../../hooks/useFetch';
+import { BASE_URL } from '../../utils/config';
+
+
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 export const Layout: React.FC = () => {
+  const { data} = useFetch(`${BASE_URL}/`); 
+ 
+  useEffect(()=>{
+    if(data ){
+      const responseData = data as { body: string }; 
+      localStorage.setItem('sessionID', responseData.body);
+    }
 
-
-
+  },[data]);
+  
   return (
     <div className="min-h-full background-image" >
       <div className="   pb-8">
@@ -66,8 +77,6 @@ export const Layout: React.FC = () => {
                             Login
                           </Button>
                         </div>
-
-                        
                       </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">
@@ -88,6 +97,7 @@ export const Layout: React.FC = () => {
                         )}
                       </Disclosure.Button>
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -148,9 +158,7 @@ export const Layout: React.FC = () => {
             </>
           )}
         </Disclosure>
-        <header className="py-3">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"></div>
-        </header>
+        
       </div>
 
       <main className="-mt-8 ">

@@ -1,10 +1,36 @@
-import React from 'react';
-
+import React,{ useEffect, useState } from 'react';
 import '../../css/layout_styles.css';
 // import { IncarcaFisier } from '../guest/IncarcaFisier.tsx';
 import { Form } from '../../components/Form.tsx';
+import useFetch from '../../hooks/useSessionFetch.ts';
+import { BASE_URL } from '../../utils/config';
+import axios from 'axios';
+
+
 
 export const Home: React.FC = () => {
+  const [imageUrl, setImageUrl] = useState<string>('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/v1/getQRcode?token=${localStorage.getItem('sessionID')}`);
+    
+        if (!response.ok) {
+          throw new Error('Failed to fetch QR code');
+        }
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        setImageUrl(url);
+      } catch (error) {
+        console.error('Error fetching QR code:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
   return (
     <div className="relative isolate overflow-hidden  ">
       <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
@@ -23,8 +49,8 @@ export const Home: React.FC = () => {
           </div>
         </div>
         <img
-          src="src/components/scan.png"
-          alt="logo"
+          src={imageUrl}
+          alt="QR code "
           className="mt-10  max-w-lg rounded-2xl  sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 "
         />
       </div>

@@ -30,12 +30,12 @@ export const FileUpload: React.FC<Props> = ({ onDrop, selectedFile }) => {
     <div className="h-[265px] flex flex-col gap-2">
       <div
         className={twMerge(
-          'w-96 h-52 flex justify-center items-center p-5 border border-dashed rounded-xl text-center',
+          'w-96 h-40 flex justify-center items-center p-5 border border-dashed rounded-xl text-center ',
           isDragActive ? 'bg-[#035ffe] text-white animate-pulse' : 'bg-slate-100/50 text-slate-400'
         )}
         {...getRootProps()}>
         <input {...getInputProps()} />
-        {!isDragActive && <p>Click here or drop a file to upload</p>}
+        {!isDragActive && <p className="text-black">Click here or drop a file to upload</p>}
         {isDragActive && !isDragReject && <p>Drop to upload this file!</p>}
         {isDragReject && <p>File type not accepted, sorry!</p>}
       </div>
