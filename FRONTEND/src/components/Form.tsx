@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FileUpload } from './FileUpload.tsx';
 import { Button } from '@nextui-org/react';
@@ -11,8 +11,14 @@ type FormData = {
 };
 
 export const Form: React.FC = () => {
+  // simulare loading state
+  const [isPending, setIsPending] = useState(false);
+
   const { register, handleSubmit, setValue, watch, reset } = useForm<FormData>({
     mode: 'onChange',
+    defaultValues: {
+      radioOption: 'option1',
+    },
   });
 
   const selectedFile = watch('file');
@@ -27,23 +33,33 @@ export const Form: React.FC = () => {
   };
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log('Form Data:', data);
-    reset();
+    // simulare loading state - de scos is pending
+
+    setIsPending(true);
+    setTimeout(() => {
+      setIsPending(false);
+      console.log('Form Data:', data);
+      reset();
+    }, 3000);
   };
 
   return (
     <form
       className="flex flex-col"
       onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex">
+      <div className="flex flex-row gap-4">
         <div>
-        <p className="font-bold text-gray-900 " style={{  fontStyle: 'italic' }}>Select an option: </p>
+          <p
+            className="font-bold text-gray-900 "
+            style={{ fontStyle: 'italic' }}>
+            Select an option:{' '}
+          </p>
           <fieldset className="mt-2">
             <label className="flex flex-row gap-1.5 items-center text-white">
               <input
                 type="radio"
                 value="option1"
-                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-black" 
+                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-black"
                 {...register('radioOption', { required: 'Please select an option' })}
                 onChange={handleRadioChange}
               />
@@ -71,26 +87,23 @@ export const Form: React.FC = () => {
             </label>
           </fieldset>
         </div>
-        <div style={{ marginLeft: '50px' }}>
+        <div className={'flex flex-col'}>
           <FileUpload
             selectedFile={selectedFile}
             onDrop={handleFileChange}
           />
-        </div>
-        
-       
-      </div>
-      
-      <Button
-        variant="solid"
-        color="primary"
-        isDisabled={!selectedFile || !selectedOption}
-        type="submit"
-        className="text-gray-900 font-medium bg-white w-64 h-10"
-       >
-        Convert
-      </Button>
 
+          <Button
+            variant="solid"
+            color="primary"
+            isDisabled={!selectedFile || !selectedOption}
+            isLoading={isPending}
+            type="submit"
+            className="text-gray-900 font-medium bg-white w-full">
+            Convert
+          </Button>
+        </div>
+      </div>
     </form>
   );
 };

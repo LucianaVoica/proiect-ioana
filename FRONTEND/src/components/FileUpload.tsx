@@ -27,35 +27,41 @@ export const FileUpload: React.FC<Props> = ({ onDrop, selectedFile }) => {
   };
 
   return (
-    <div className="h-[269px] flex flex-col gap-2">
+    <div className="h-[269px] flex flex-col">
       <div
         className={twMerge(
-          'w-96 h-60 flex justify-center items-center p-5 border border-dashed rounded-xl text-center ',
-          isDragActive ? 'bg-[#035ffe] text-white animate-pulse' : 'bg-slate-100/50 text-slate-400'
+          'w-96 h-60 justify-center items-center p-5 border border-dashed rounded-xl text-center flex flex-col',
+          isDragActive ? 'bg-[#035ffe] text-white animate-pulse' : 'bg-slate-100/70 text-slate-400'
         )}
         {...getRootProps()}>
         <input {...getInputProps()} />
-        {!isDragActive && <p className="text-black">Click here or drop a file to upload</p>}
+        {!isDragActive && (
+          <p className="text-black">
+            {selectedFile
+              ? 'Drag and drop here, or click to replace the file'
+              : 'Drag and drop your file here, or click to select a file'}
+          </p>
+        )}
         {isDragActive && !isDragReject && <p>Drop to upload this file!</p>}
         {isDragReject && <p>File type not accepted, sorry!</p>}
+        {selectedFile && (
+          <div className="px-5 w-96 py-1 text-white bg-slate-500/40 rounded-md mt-44 absolute flex flex-row gap-2 items-center justify-between">
+            <p className="line-clamp-1">{selectedFile.name}</p>
+            <Tooltip
+              closeDelay={0}
+              showArrow={true}
+              content="Delete">
+              <Button
+                isIconOnly={true}
+                color="danger"
+                variant="flat"
+                startContent={<LuTrash2 />}
+                onPress={removeFile}
+              />
+            </Tooltip>
+          </div>
+        )}
       </div>
-      {selectedFile && (
-        <div className="px-5 py-1 border bg-slate-100/50 text-slate-400 rounded-xl flex flex-row gap-2 items-center justify-between">
-          <p>{selectedFile.name}</p>
-          <Tooltip
-            closeDelay={0}
-            showArrow={true}
-            content="Delete">
-            <Button
-              isIconOnly={true}
-              color="danger"
-              variant="flat"
-              startContent={<LuTrash2 />}
-              onPress={removeFile}
-            />
-          </Tooltip>
-        </div>
-      )}
     </div>
   );
 };
