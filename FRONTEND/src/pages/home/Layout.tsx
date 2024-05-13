@@ -2,6 +2,7 @@ import React, {useEffect,} from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { navigation, user, userNavigation } from '../../constants/homeConstants.tsx';
+// @ts-ignore
 import { NavLink, Outlet } from 'react-router-dom';
 import Footer from './footer.tsx';
 import { Button } from '@nextui-org/react';

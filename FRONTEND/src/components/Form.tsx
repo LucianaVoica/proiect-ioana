@@ -47,8 +47,8 @@ export const Form: React.FC = () => {
     <form
       className="flex flex-col"
       onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-row gap-4">
-        <div>
+      <div className="flex flex-row gap-5">
+        <div className='mt-10'>
           <p
             className="font-bold text-gray-900 "
             style={{ fontStyle: 'italic' }}>
@@ -87,7 +87,7 @@ export const Form: React.FC = () => {
             </label>
           </fieldset>
         </div>
-        <div className={'flex flex-col'}>
+        <div className={' flex flex-col'}>
           <FileUpload
             selectedFile={selectedFile}
             onDrop={handleFileChange}
