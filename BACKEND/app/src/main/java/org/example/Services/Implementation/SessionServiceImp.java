@@ -1,6 +1,6 @@
 package org.example.Services.Implementation;
 
-import org.example.Entities.tokens;
+import org.example.Entities.Tokens;
 import org.example.Repository.TokenRepository;
 import org.example.Services.Interface.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ public class SessionServiceImp implements SessionService {
 
     private final TokenRepository tokenRepository;
     private static final int TOKEN_LENGTH = 32;
+    private static  byte[] tokenBytes = null;
 
     @Autowired
     public SessionServiceImp(TokenRepository tokenRepository) {
@@ -28,8 +29,11 @@ public class SessionServiceImp implements SessionService {
         secureRandom.nextBytes(tokenBytes);
 
         String token = Base64.getEncoder().encodeToString(tokenBytes);
-        tokens tokens = org.example.Entities.tokens.builder().tokenString(token).build();
-        tokenRepository.save(tokens);
+        token="ZieH2nkazAsnyi2ItVrVN5RGEg1Iv27ilFI9VDES8o4=";
+        Tokens tokens = Tokens.builder().tokenString(token).build();
+
+        System.out.println("START SESSION: "+ tokens);
+//        tokenRepository.save(tokens);
         return ResponseEntity.ok().body(token);
     }
 
@@ -37,7 +41,7 @@ public class SessionServiceImp implements SessionService {
     public byte[] getToken()
     {
         SecureRandom secureRandom = new SecureRandom();
-        byte[] tokenBytes = new byte[TOKEN_LENGTH];
+        tokenBytes = new byte[TOKEN_LENGTH];
         secureRandom.nextBytes(tokenBytes);
         return  tokenBytes;
     }
@@ -47,4 +51,5 @@ public class SessionServiceImp implements SessionService {
         return tokenRepository.findIdByToken(token) > 0;
 
     }
+
 }

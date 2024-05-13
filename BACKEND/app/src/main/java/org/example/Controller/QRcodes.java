@@ -23,10 +23,11 @@ public class QRcodes {
     {
         if(sessionService.checkToken(token)){
             System.out.println("Token ok");
+            System.out.println("QR CODE: "+token);
             return ResponseEntity.ok(qRcodeService.getQRforUser(token));
         }else{
             System.out.println("Token de sesiune inexistent");
-            return (ResponseEntity<?>) ResponseEntity.badRequest();
+            return ResponseEntity.badRequest().build();
         }
 
     }

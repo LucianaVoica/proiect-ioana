@@ -31,8 +31,7 @@ public class QRtool {
             Map<EncodeHintType, Object> hints = new HashMap<>();
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            String endpoint = "http://localhost:3000/api/v1/postImage?token="+text+",image=";
-            BitMatrix bitMatrix=qrCodeWriter.encode(endpoint, BarcodeFormat.QR_CODE,width,height,hints);
+            BitMatrix bitMatrix=qrCodeWriter.encode(text, BarcodeFormat.QR_CODE,width,height,hints);
             return toByteArray(bitMatrix,width,height);
         }catch (Exception e){
             e.printStackTrace();

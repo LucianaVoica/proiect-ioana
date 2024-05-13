@@ -8,4 +8,5 @@ public interface SessionService {
     public byte[] getToken();
 
     public boolean checkToken(String token);
+
 }
